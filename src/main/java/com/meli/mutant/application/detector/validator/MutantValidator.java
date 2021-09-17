@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 public class MutantValidator implements AdnValidatorInterface {
@@ -23,14 +22,13 @@ public class MutantValidator implements AdnValidatorInterface {
     private final static int MUTANT_DNA_SEQUENCE_LIMIT = 4;
 
     @Override
-    public Mono<Human> validateGeneticCode(Human human) {
+    public Mono<Human> validateGeneticCode(final Human human) {
         Map<String, List<AdnNode>> sortedDna = mapDnaNodes(human.getDna(), human.getDna().get(0).length());
 
-        Human finalHuman = human;
         return Flux.fromIterable(sortedDna.values())
                 .map(adnNodes -> validateDnaChain(adnNodes))
                 .reduce(Integer::sum)
-                .map(value -> value >= MUTANT_DNA_LIMIT? finalHuman.toBuilder().isMutant(true).build() : finalHuman);
+                .map(value -> value >= MUTANT_DNA_LIMIT ? human.toBuilder().isMutant(true).build() : human.toBuilder().isMutant(false).build());
     }
 
     private int validateDnaChain(List<AdnNode> adnNodes) {
@@ -55,6 +53,13 @@ public class MutantValidator implements AdnValidatorInterface {
         return totalCoincidences;
     }
 
+    /**
+     * Flat the input DNA into lists
+     *
+     * @param dna
+     * @param length
+     * @return
+     */
     private Map<String, List<AdnNode>> mapDnaNodes(List<String> dna, int length) {
         Map<String, List<AdnNode>> allNodes = new HashMap<>();
 

@@ -8,9 +8,7 @@ import java.util.List;
 @Value
 @Builder(toBuilder = true)
 public class Human {
-    Integer hash;
     List<String> dna;
-    @Builder.Default
-    boolean isMutant = false;
+    boolean isMutant;
 
 }
