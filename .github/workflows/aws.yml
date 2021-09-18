@@ -79,5 +79,5 @@ jobs:
         with:
           task-definition: task-definition.json
           service: meli-service
-          cluster: clusterTest
+          cluster: meli-cluster
           wait-for-service-stability: true
