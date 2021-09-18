@@ -57,7 +57,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: 247155818550.dkr.ecr.us-west-2.amazonaws.com/wilfer_test
+          ECR_REPOSITORY: wilfer_test
           IMAGE_TAG: ${{ github.sha }}
         run: |
           # Build a docker container and
