@@ -1,5 +1,5 @@
 {
-  "executionRoleArn": "arn:aws:iam::497654570788:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::247155818550:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "entryPoint": null,
@@ -47,7 +47,7 @@
   ],
   "placementConstraints": [],
   "memory": "500",
-  "taskRoleArn": "arn:aws:iam::497654570788:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::247155818550:role/ecsTaskExecutionRole",
   "family": "ec2-task",
   "pidMode": null,
   "requiresCompatibilities": [
