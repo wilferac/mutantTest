@@ -34,7 +34,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "497654570788.dkr.ecr.us-west-2.amazonaws.com/learn:latest",
+      "image": "247155818550.dkr.ecr.us-west-2.amazonaws.com/wilfer_test",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
