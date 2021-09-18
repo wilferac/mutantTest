@@ -48,7 +48,7 @@
   "placementConstraints": [],
   "memory": "500",
   "taskRoleArn": "arn:aws:iam::247155818550:role/ecsTaskExecutionRole",
-  "family": "ec2-task",
+  "family": "meli-task",
   "pidMode": null,
   "requiresCompatibilities": [
     "EC2"
