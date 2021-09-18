@@ -2,15 +2,6 @@
   "executionRoleArn": "arn:aws:iam::497654570788:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/ec2-task",
-          "awslogs-region": "us-west-2",
-          "awslogs-stream-prefix": "ecs"
-        },
-        "secretOptions": null
-      },
       "entryPoint": null,
       "portMappings": [
         {
