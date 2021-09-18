@@ -1,5 +1,6 @@
-package com.meli.mutant.application.detector;
+package com.meli.mutant.application.configuration.factories;
 
+import com.meli.mutant.application.detector.DetectorService;
 import com.meli.mutant.application.detector.validator.MutantValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
