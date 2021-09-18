@@ -1,7 +1,7 @@
 FROM openjdk:11-jdk-alpine
 RUN apk --no-cache add curl
 VOLUME /tmp
-ARG REGION_ARG=ap-south-1
+ARG REGION_ARG=us-west-2
 ARG ACCESS_ARG
 ARG SECRET_ARG
 ENV AWS_REGION=$REGION_ARG
