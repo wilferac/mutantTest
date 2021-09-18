@@ -23,10 +23,10 @@ public class MutantValidator implements AdnValidatorInterface {
 
     @Override
     public Mono<Human> validateGeneticCode(final Human human) {
-        Map<String, List<AdnNode>> sortedDna = mapDnaNodes(human.getDna(), human.getDna().get(0).length());
+        Map<String, List<AdnNode>> flattedDna = mapDnaNodes(human.getDna(), human.getDna().get(0).length());
 
-        return Flux.fromIterable(sortedDna.values())
-                .map(adnNodes -> validateDnaChain(adnNodes))
+        return Flux.fromIterable(flattedDna.values())
+                .map(this::validateDnaChain)
                 .reduce(Integer::sum)
                 .map(value -> value >= MUTANT_DNA_LIMIT ? human.toBuilder().isMutant(true).build() : human.toBuilder().isMutant(false).build());
     }
@@ -55,10 +55,6 @@ public class MutantValidator implements AdnValidatorInterface {
 
     /**
      * Flat the input DNA into lists
-     *
-     * @param dna
-     * @param length
-     * @return
      */
     private Map<String, List<AdnNode>> mapDnaNodes(List<String> dna, int length) {
         Map<String, List<AdnNode>> allNodes = new HashMap<>();
