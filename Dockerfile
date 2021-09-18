@@ -1,5 +1,4 @@
 FROM openjdk:11-jre-slim-buster
-RUN apk --no-cache add curl
 VOLUME /tmp
 ARG REGION_ARG=us-west-2
 ARG ACCESS_ARG
