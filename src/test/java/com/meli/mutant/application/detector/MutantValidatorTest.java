@@ -1,6 +1,6 @@
 package com.meli.mutant.application.detector;
 
-import com.meli.mutant.application.detector.domain.Human;
+import com.meli.mutant.application.Human.domain.Human;
 import com.meli.mutant.application.detector.validator.MutantValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;

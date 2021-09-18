@@ -2,7 +2,7 @@ package com.meli.mutant.application.detector.validator;
 
 import com.meli.mutant.application.detector.domain.AdnNode;
 import com.meli.mutant.application.detector.domain.EnumDnaSequence;
-import com.meli.mutant.application.detector.domain.Human;
+import com.meli.mutant.application.Human.domain.Human;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

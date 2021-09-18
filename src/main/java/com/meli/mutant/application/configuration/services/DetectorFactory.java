@@ -1,5 +1,6 @@
-package com.meli.mutant.application.configuration.factories;
+package com.meli.mutant.application.configuration.services;
 
+import com.meli.mutant.application.Human.HumanService;
 import com.meli.mutant.application.detector.DetectorService;
 import com.meli.mutant.application.detector.validator.MutantValidator;
 import org.springframework.context.annotation.Bean;
@@ -14,9 +15,8 @@ public class DetectorFactory {
     }
 
     @Bean
-    public DetectorService getDetectorService(MutantValidator mutantValidator) {
-        return new DetectorService(mutantValidator);
+    public DetectorService getDetectorService(MutantValidator mutantValidator, HumanService humanService) {
+        return new DetectorService(mutantValidator, humanService);
     }
-
 
 }
