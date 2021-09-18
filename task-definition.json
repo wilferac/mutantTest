@@ -42,7 +42,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "learn"
+      "name": "meli-container"
     }
   ],
   "placementConstraints": [],
