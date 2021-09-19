@@ -1,9 +1,9 @@
 package com.meli.mutant.application.detector;
 
-import com.meli.mutant.application.human.HumanService;
-import com.meli.mutant.application.human.domain.Human;
 import com.meli.mutant.application.detector.domain.DnaChain;
 import com.meli.mutant.application.detector.validator.AdnValidatorInterface;
+import com.meli.mutant.application.human.HumanService;
+import com.meli.mutant.application.human.domain.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -85,8 +85,13 @@ class DetectorServiceTest {
                 Arguments.of(List.of("ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA")),
                 Arguments.of(List.of("ATGCGA", "CAGTGC", "TTATGT", "AGAAXG", "CCCCTA", "TCACTG")),
                 Arguments.of(List.of("ATG", "CAG", "TTA")),
-                Arguments.of(List.of("ATGCGAATGCGAATGCGAATG")),
-                Arguments.of(List.of("A"))
+                Arguments.of(List.of("A")),
+                Arguments.of(List.of(
+                        "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA",
+                        "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA",
+                        "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA",
+                        "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA", "ATGCGAATGCGAATGCGAATA",
+                        "ATGCGAATGCGAATGCGAATA"))
         );
     }
 
