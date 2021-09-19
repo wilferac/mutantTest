@@ -1,12 +1,10 @@
 name: pitest
+
 on:
   push:
-    branches:
-      - master
-    paths-ignore:
-      - '**.md'
-      - '**.yml'
-      - '**.yaml'
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
