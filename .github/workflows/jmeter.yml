@@ -1,0 +1,25 @@
+name: Test JMeter Action
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  action_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Apache JMeter
+        uses: rbhadti94/apache-jmeter-action@v0.4.0
+        with:
+          testFilePath: src/main/resources/jmeter/mutant_load_test.jmx
+          outputReportsFolder: reports/
+          args: "--loglevel INFO"
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: jmeter-test-results
+          path: reports/
