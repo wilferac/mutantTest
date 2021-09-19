@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HumanService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">com.meli.mutant.application.human</a> &gt; <span class="el_source">HumanService.java</span></div><h1>HumanService.java</h1><pre class="source lang-java linenums">package com.meli.mutant.application.human;
+
+import com.meli.mutant.application.human.adapter.HumanRepository;
+import com.meli.mutant.application.human.domain.Human;
+import lombok.AllArgsConstructor;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.List;
+
+@AllArgsConstructor
+public class HumanService {
+    private final HumanRepository humanRepository;
+
+    public Flux&lt;Human&gt; filterByMutation(boolean isMutant) {
+<span class="fc" id="L16">        return humanRepository.filterByMutation(isMutant);</span>
+    }
+
+    public Mono&lt;Human&gt; getByDna(List&lt;String&gt; dna) {
+<span class="fc" id="L20">        return humanRepository.getByDna(dna);</span>
+    }
+
+    public Mono&lt;Human&gt; save(Human human) {
+<span class="fc" id="L24">        return humanRepository.save(human);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

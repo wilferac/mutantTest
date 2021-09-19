@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MutantValidator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">com.meli.mutant.application.detector.validator</a> &gt; <span class="el_source">MutantValidator.java</span></div><h1>MutantValidator.java</h1><pre class="source lang-java linenums">package com.meli.mutant.application.detector.validator;
+
+import com.meli.mutant.application.human.domain.Human;
+import com.meli.mutant.application.detector.domain.AdnNode;
+import com.meli.mutant.application.detector.domain.DnaChain;
+import com.meli.mutant.application.detector.domain.EnumDnaSequence;
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Mono;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+<span class="fc" id="L15">@Slf4j</span>
+<span class="fc" id="L16">public class MutantValidator implements AdnValidatorInterface {</span>
+    private final static String HORIZONTAL_CHAIN = &quot;H&quot;;
+    private final static String VERTICAL_CHAIN = &quot;V&quot;;
+    private final static String DIAGONAL_CHAIN_UPPER_LEFT_RIGHT = &quot;D1-&quot;;
+    private final static String DIAGONAL_CHAIN_UPPER_RIGHT_LEFT = &quot;D2-&quot;;
+
+    @Override
+    public Mono&lt;Human&gt; validateGeneticCode(final Human human) {
+<span class="fc" id="L24">        Map&lt;String, List&lt;AdnNode&gt;&gt; flattedDna = mapDnaNodes(human.getDna(), human.getDna().get(0).length());</span>
+
+<span class="fc" id="L26">        return Mono.just(flattedDna.values())</span>
+<span class="fc" id="L27">                .map(allChains -&gt; {</span>
+<span class="fc" id="L28">                    int founded = 0;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">                    for (List&lt;AdnNode&gt; adnNodes : allChains) {</span>
+<span class="fc" id="L30">                        founded += this.validateDnaChain(adnNodes);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">                        if (founded &gt;= DnaChain.MUTANT_DNA_LIMIT) {</span>
+<span class="fc" id="L32">                            return founded;</span>
+                        }
+<span class="fc" id="L34">                    }</span>
+<span class="fc" id="L35">                    return founded;</span>
+                })
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                .map(value -&gt; value &gt;= DnaChain.MUTANT_DNA_LIMIT ?</span>
+<span class="fc" id="L38">                        human.toBuilder().validChainsEvaluated(value).isMutant(true).build() : human.toBuilder().validChainsEvaluated(value).isMutant(false).build());</span>
+    }
+
+    private int validateDnaChain(List&lt;AdnNode&gt; adnNodes) {
+<span class="fc" id="L42">        int chainsFound = 0;</span>
+<span class="fc" id="L43">        int totalCoincidences = 0;</span>
+<span class="fc" id="L44">        EnumDnaSequence lastDnaSequence = null;</span>
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        for (AdnNode adnNode : adnNodes) {</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            if (adnNode.getDnaSequence().equals(lastDnaSequence)) {</span>
+<span class="fc" id="L48">                chainsFound++;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                if (chainsFound == DnaChain.MUTANT_DNA_SEQUENCE_LIMIT) {</span>
+<span class="fc" id="L50">                    chainsFound = 0;</span>
+<span class="fc" id="L51">                    lastDnaSequence = null;</span>
+<span class="fc" id="L52">                    totalCoincidences++;</span>
+                }
+            } else {
+<span class="fc" id="L55">                chainsFound = 1;</span>
+<span class="fc" id="L56">                lastDnaSequence = adnNode.getDnaSequence();</span>
+            }
+<span class="fc" id="L58">        }</span>
+
+<span class="fc" id="L60">        return totalCoincidences;</span>
+    }
+
+    /**
+     * Flat the input DNA into lists
+     */
+    private Map&lt;String, List&lt;AdnNode&gt;&gt; mapDnaNodes(List&lt;String&gt; dna, int length) {
+<span class="fc" id="L67">        Map&lt;String, List&lt;AdnNode&gt;&gt; allNodes = new HashMap&lt;&gt;();</span>
+
+        List&lt;AdnNode&gt; curNodes;
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for (int file = 0; file &lt; length; file++) {</span>
+<span class="fc" id="L71">            curNodes = AdnNode.createFromString(dna.get(file));</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            for (int column = 0; column &lt; length; column++) {</span>
+<span class="fc" id="L73">                int d1 = file - column;</span>
+<span class="fc" id="L74">                int d2 = file + column;</span>
+<span class="fc" id="L75">                allNodes.put(HORIZONTAL_CHAIN + file, getNewNodes(allNodes, HORIZONTAL_CHAIN + file, curNodes.get(column)));</span>
+<span class="fc" id="L76">                allNodes.put(VERTICAL_CHAIN + column, getNewNodes(allNodes, VERTICAL_CHAIN + column, curNodes.get(column)));</span>
+<span class="fc" id="L77">                allNodes.put(DIAGONAL_CHAIN_UPPER_LEFT_RIGHT + d1, getNewNodes(allNodes, DIAGONAL_CHAIN_UPPER_LEFT_RIGHT + d1, curNodes.get(column)));</span>
+<span class="fc" id="L78">                allNodes.put(DIAGONAL_CHAIN_UPPER_RIGHT_LEFT + d2, getNewNodes(allNodes, DIAGONAL_CHAIN_UPPER_RIGHT_LEFT + d2, curNodes.get(column)));</span>
+            }
+        }
+
+<span class="fc" id="L82">        return allNodes;</span>
+    }
+
+    private List&lt;AdnNode&gt; getNewNodes(Map&lt;String, List&lt;AdnNode&gt;&gt; allNodes, String key, AdnNode newNode) {
+<span class="fc" id="L86">        List&lt;AdnNode&gt; curNodes = allNodes.getOrDefault(key, new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L87">        curNodes.add(newNode);</span>
+<span class="fc" id="L88">        return curNodes;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

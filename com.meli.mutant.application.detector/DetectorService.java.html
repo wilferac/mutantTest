@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DetectorService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">com.meli.mutant.application.detector</a> &gt; <span class="el_source">DetectorService.java</span></div><h1>DetectorService.java</h1><pre class="source lang-java linenums">package com.meli.mutant.application.detector;
+
+import com.meli.mutant.application.human.HumanService;
+import com.meli.mutant.application.human.domain.Human;
+import com.meli.mutant.application.detector.domain.DnaChain;
+import com.meli.mutant.application.detector.validator.AdnValidatorInterface;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import reactor.core.publisher.Mono;
+
+@AllArgsConstructor
+public class DetectorService {
+    private final AdnValidatorInterface mutantValidator;
+    private final HumanService humanService;
+
+    public Mono&lt;ResponseEntity&gt; isMutant(DnaChain dnaChain) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (!dnaChain.validateDna()) {</span>
+<span class="fc" id="L19">            return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).body(&quot;La cadena de ADN es invalida&quot;));</span>
+        }
+
+<span class="fc" id="L22">        Mono&lt;Human&gt; validatedHuman = mutantValidator.validateGeneticCode(Human.create(dnaChain))</span>
+<span class="fc" id="L23">                .flatMap(currentHuman -&gt; humanService.save(currentHuman));</span>
+
+<span class="fc" id="L25">        return humanService.getByDna(dnaChain.getDna())</span>
+<span class="fc" id="L26">                .switchIfEmpty(validatedHuman)</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">                .map(currentHuman -&gt; currentHuman.isMutant() ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.FORBIDDEN).build());</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

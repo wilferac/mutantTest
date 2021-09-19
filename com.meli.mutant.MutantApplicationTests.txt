@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.meli.mutant.MutantApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.274 s - in com.meli.mutant.MutantApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.796 s - in com.meli.mutant.MutantApplicationTests

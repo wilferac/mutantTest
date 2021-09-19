@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HumanAdapter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">com.meli.mutant.application.human.adapter</a> &gt; <span class="el_source">HumanAdapter.java</span></div><h1>HumanAdapter.java</h1><pre class="source lang-java linenums">package com.meli.mutant.application.human.adapter;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.meli.mutant.application.human.domain.Human;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+<span class="fc" id="L15">@Slf4j</span>
+@AllArgsConstructor
+public class HumanAdapter implements HumanRepository {
+<span class="fc" id="L18">    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();</span>
+    private final HumanCrudRepository humanCrudRepository;
+
+    @Override
+    public Flux&lt;Human&gt; filterByMutation(boolean isMutant) {
+<span class="fc" id="L23">        return humanCrudRepository.findAllByIsMutant(isMutant).map(this::mapToHuman);</span>
+    }
+
+    @Override
+    public Mono&lt;Human&gt; save(Human human) {
+<span class="fc" id="L28">        return humanCrudRepository.save(mapToHumanEntity(human)).map(entity -&gt; human.toBuilder().id(entity.getId()).build());</span>
+    }
+
+    @Override
+    public Mono&lt;Human&gt; getByDna(List&lt;String&gt; dna) {
+<span class="fc" id="L33">        return humanCrudRepository.findByDna(getPlainDna(dna)).map(this::mapToHuman);</span>
+    }
+
+    private Human mapToHuman(HumanEntity humanEntity) {
+<span class="fc" id="L37">        List&lt;String&gt; dna = Collections.emptyList();</span>
+        try {
+<span class="fc" id="L39">            dna = OBJECT_MAPPER.readValue(humanEntity.getDna(), OBJECT_MAPPER.getTypeFactory().constructCollectionType(Collection.class, String.class));</span>
+<span class="fc" id="L40">        } catch (JsonProcessingException jsonProcessingException) {</span>
+<span class="fc" id="L41">            log.error(&quot;unable to map to HumanEntity to Human&quot;, jsonProcessingException);</span>
+<span class="fc" id="L42">        }</span>
+
+<span class="fc" id="L44">        return Human.builder().id(humanEntity.getId()).dna(dna).isMutant(humanEntity.getIsMutant()).build();</span>
+    }
+
+    private HumanEntity mapToHumanEntity(Human human) {
+<span class="fc" id="L48">        return HumanEntity.builder()</span>
+<span class="fc" id="L49">                .dna(getPlainDna(human.getDna()))</span>
+<span class="fc" id="L50">                .isMutant(human.isMutant())</span>
+<span class="fc" id="L51">                .build();</span>
+    }
+
+    private String getPlainDna(List&lt;String&gt; dna) {
+        try {
+<span class="fc" id="L56">            return OBJECT_MAPPER.writeValueAsString(dna);</span>
+<span class="nc" id="L57">        } catch (JsonProcessingException jsonProcessingException) {</span>
+<span class="nc" id="L58">            log.error(&quot;unable to map to get PlainDna&quot;, jsonProcessingException);</span>
+<span class="nc" id="L59">            return &quot;&quot;;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
