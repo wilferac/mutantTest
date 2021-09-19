@@ -1,4 +1,4 @@
-package com.meli.mutant.application.configuration.openApi;
+package com.meli.mutant.configuration.openApi;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;

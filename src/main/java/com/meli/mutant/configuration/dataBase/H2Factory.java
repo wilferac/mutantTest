@@ -1,4 +1,4 @@
-package com.meli.mutant.application.configuration.dataBase;
+package com.meli.mutant.configuration.dataBase;
 
 
 import io.r2dbc.h2.H2ConnectionConfiguration;

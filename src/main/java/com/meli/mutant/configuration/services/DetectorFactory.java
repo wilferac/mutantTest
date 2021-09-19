@@ -1,4 +1,4 @@
-package com.meli.mutant.application.configuration.services;
+package com.meli.mutant.configuration.services;
 
 import com.meli.mutant.application.human.HumanService;
 import com.meli.mutant.application.detector.DetectorService;

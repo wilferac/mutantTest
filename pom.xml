@@ -122,7 +122,7 @@
                         <excludedTestClass>com.meli.mutant.application.*</excludedTestClass>
                     </targetClasses>
                     <excludedClasses>
-                        <class>com.meli.mutant.application.configuration.**</class>
+                        <class>com.meli.mutant.configuration.**</class>
                     </excludedClasses>
                 </configuration>
             </plugin>
