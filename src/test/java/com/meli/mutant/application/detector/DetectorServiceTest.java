@@ -68,7 +68,13 @@ class DetectorServiceTest {
         return List.of(
                 Arguments.of(List.of("AAAA", "CCCC", "TTAT", "AGAA"), true, ResponseEntity.ok().build()),
                 Arguments.of(List.of("ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"), true, ResponseEntity.ok().build()),
-                Arguments.of(List.of("ATGCTA", "CAGTGC", "TTATGT", "AGAAGG", "CCTCTA", "TCACTG"), false, ResponseEntity.status(HttpStatus.FORBIDDEN).build())
+                Arguments.of(List.of("ATGCTA", "CAGTGC", "TTATGT", "AGAAGG", "CCTCTA", "TCACTG"), false, ResponseEntity.status(HttpStatus.FORBIDDEN).build()),
+                Arguments.of(List.of(
+                                "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT",
+                                "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT",
+                                "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT",
+                                "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT"),
+                        true, ResponseEntity.ok().build())
         );
     }
 
@@ -79,6 +85,7 @@ class DetectorServiceTest {
                 Arguments.of(List.of("ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA")),
                 Arguments.of(List.of("ATGCGA", "CAGTGC", "TTATGT", "AGAAXG", "CCCCTA", "TCACTG")),
                 Arguments.of(List.of("ATG", "CAG", "TTA")),
+                Arguments.of(List.of("ATGCGAATGCGAATGCGAATG")),
                 Arguments.of(List.of("A"))
         );
     }

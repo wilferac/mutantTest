@@ -14,6 +14,7 @@ public class DnaChain {
     private static final Pattern PATTERN = Pattern.compile("[A,T,C,G]+");
     public final static int MUTANT_DNA_LIMIT = 2;
     public final static int MUTANT_DNA_SEQUENCE_LIMIT = 4;
+    public final static int MUTANT_DNA_SEQUENCE_MAXIMUM = 20;
 
     List<String> dna;
 
@@ -21,7 +22,7 @@ public class DnaChain {
     public boolean validateDna() {
         int filesSize = dna.size();
 
-        if (filesSize >= MUTANT_DNA_SEQUENCE_LIMIT) {
+        if (filesSize >= MUTANT_DNA_SEQUENCE_LIMIT && filesSize <= MUTANT_DNA_SEQUENCE_MAXIMUM) {
 
             var sameSizeFiles = dna.stream()
                     .filter(chain -> chain.length() == filesSize && PATTERN.matcher(chain).matches())

@@ -19,7 +19,8 @@ import reactor.core.publisher.Mono;
 public class DetectorController {
     private final DetectorService detectorService;
 
-    @Operation(summary = "Validar si una cadena de adn pertenece a un mutante")
+    @Operation(summary = "Validar si una cadena de adn pertenece a un mutante",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Cadenas de ADN con un valor minimo 4x4 y maximo de 20x20", required = true))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "el adn es mutante", content = @Content),
             @ApiResponse(responseCode = "400", description = "parametros de entrada invalidos", content = @Content),
