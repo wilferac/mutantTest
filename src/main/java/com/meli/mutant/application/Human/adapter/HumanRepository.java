@@ -7,7 +7,6 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 public interface HumanRepository {
-    Flux<Human> getAll();
 
     Flux<Human> filterByMutation(boolean isMutant);
 

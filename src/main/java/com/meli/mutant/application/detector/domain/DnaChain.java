@@ -12,13 +12,17 @@ import java.util.stream.Collectors;
 @Builder
 public class DnaChain {
     private static final Pattern PATTERN = Pattern.compile("[A,T,C,G]+");
+    public final static int MUTANT_DNA_LIMIT = 2;
+    public final static int MUTANT_DNA_SEQUENCE_LIMIT = 4;
 
     List<String> dna;
 
     @JsonIgnore
     public boolean validateDna() {
-        if (!dna.isEmpty()) {
-            int filesSize = dna.size();
+        int filesSize = dna.size();
+
+        if (filesSize >= MUTANT_DNA_SEQUENCE_LIMIT) {
+
             var sameSizeFiles = dna.stream()
                     .filter(chain -> chain.length() == filesSize && PATTERN.matcher(chain).matches())
                     .collect(Collectors.toList());

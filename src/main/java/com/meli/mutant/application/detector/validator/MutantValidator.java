@@ -2,6 +2,7 @@ package com.meli.mutant.application.detector.validator;
 
 import com.meli.mutant.application.Human.domain.Human;
 import com.meli.mutant.application.detector.domain.AdnNode;
+import com.meli.mutant.application.detector.domain.DnaChain;
 import com.meli.mutant.application.detector.domain.EnumDnaSequence;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
@@ -18,8 +19,6 @@ public class MutantValidator implements AdnValidatorInterface {
     private final static String VERTICAL_CHAIN = "V";
     private final static String DIAGONAL_CHAIN_UPPER_LEFT_RIGHT = "D1-";
     private final static String DIAGONAL_CHAIN_UPPER_RIGHT_LEFT = "D2-";
-    private final static int MUTANT_DNA_LIMIT = 2;
-    private final static int MUTANT_DNA_SEQUENCE_LIMIT = 4;
 
     @Override
     public Mono<Human> validateGeneticCode(final Human human) {
@@ -28,7 +27,7 @@ public class MutantValidator implements AdnValidatorInterface {
         return Flux.fromIterable(flattedDna.values())
                 .map(this::validateDnaChain)
                 .reduce(Integer::sum)
-                .map(value -> value >= MUTANT_DNA_LIMIT ? human.toBuilder().isMutant(true).build() : human.toBuilder().isMutant(false).build());
+                .map(value -> value >= DnaChain.MUTANT_DNA_LIMIT ? human.toBuilder().isMutant(true).build() : human.toBuilder().isMutant(false).build());
     }
 
     private int validateDnaChain(List<AdnNode> adnNodes) {
@@ -39,7 +38,7 @@ public class MutantValidator implements AdnValidatorInterface {
         for (AdnNode adnNode : adnNodes) {
             if (adnNode.getDnaSequence().equals(lastDnaSequence)) {
                 chainsFound++;
-                if (chainsFound == MUTANT_DNA_SEQUENCE_LIMIT) {
+                if (chainsFound == DnaChain.MUTANT_DNA_SEQUENCE_LIMIT) {
                     chainsFound = 0;
                     lastDnaSequence = null;
                     totalCoincidences++;

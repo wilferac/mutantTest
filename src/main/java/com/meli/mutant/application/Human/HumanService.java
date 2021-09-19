@@ -12,10 +12,6 @@ import java.util.List;
 public class HumanService {
     private final HumanRepository humanRepository;
 
-    public Flux<Human> getAll() {
-        return humanRepository.getAll();
-    }
-
     public Flux<Human> filterByMutation(boolean isMutant) {
         return humanRepository.filterByMutation(isMutant);
     }

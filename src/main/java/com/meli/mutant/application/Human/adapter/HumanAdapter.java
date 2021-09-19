@@ -19,11 +19,6 @@ public class HumanAdapter implements HumanRepository {
     private final HumanCrudRepository humanCrudRepository;
 
     @Override
-    public Flux<Human> getAll() {
-        return humanCrudRepository.findAll().map(this::mapToHuman);
-    }
-
-    @Override
     public Flux<Human> filterByMutation(boolean isMutant) {
         return humanCrudRepository.findAllByIsMutant(isMutant).map(this::mapToHuman);
     }

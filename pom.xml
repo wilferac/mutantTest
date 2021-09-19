@@ -121,6 +121,9 @@
                     <targetClasses>
                         <excludedTestClass>com.meli.mutant.application.*</excludedTestClass>
                     </targetClasses>
+                    <excludedClasses>
+                        <class>com.meli.mutant.application.configuration.**</class>
+                    </excludedClasses>
                 </configuration>
             </plugin>
 
