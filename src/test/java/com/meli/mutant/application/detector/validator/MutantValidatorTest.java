@@ -24,13 +24,15 @@ class MutantValidatorTest {
 
     @ParameterizedTest
     @MethodSource("dnaChains")
-    void shouldValidateGeneticCode(List<String> dna, boolean isMutant) {
+    void shouldValidateGeneticCode(List<String> dna, boolean isMutant, Integer validationsExecuted) {
         Human testSubject = Human.builder().dna(dna).build();
 
-        Human expectedMutant = Human.builder().dna(dna).isMutant(isMutant).build();
+        Human expectedMutant = Human.builder().dna(dna).isMutant(isMutant).validChainsEvaluated(validationsExecuted).build();
         Mono<Human> human = mutantValidator.validateGeneticCode(testSubject);
 
-        StepVerifier.create(human).expectNext(expectedMutant).verifyComplete();
+        StepVerifier.create(human)
+                .expectNext(expectedMutant)
+                .verifyComplete();
     }
 
     static List<Arguments> dnaChains() {
@@ -41,29 +43,42 @@ class MutantValidatorTest {
                         "TTATGT",
                         "AGAAGG",
                         "CCCCTA",
-                        "TCACTG"), true),
+                        "TCACTG"), true, 2),
                 Arguments.of(List.of(
                         "AAAA",
                         "CAGT",
                         "TTAT",
-                        "AGAA"), true),
+                        "AGAA"), true, 2),
                 Arguments.of(List.of(
                         "CTAA",
                         "CAAT",
                         "TAAT",
-                        "AGAA"), true),
+                        "AGAA"), true, 2),
                 Arguments.of(List.of(
                         "CTAC",
                         "CAAT",
                         "TAAT",
-                        "AGAA"), false),
+                        "AGAA"), false, 1),
                 Arguments.of(List.of(
                         "ATGCTA",
                         "CAGTGC",
                         "TTATGT",
                         "AGAAGG",
                         "CCTCTA",
-                        "TCACTG"), false)
+                        "TCACTG"), false, 1),
+                Arguments.of(List.of(
+                        "AAAAAA",
+                        "AAAAAA",
+                        "AAAAAA",
+                        "AAAAAA",
+                        "AAAAAA",
+                        "AAAAAA"), true, 2),
+                Arguments.of(List.of(
+                                "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT",
+                                "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT",
+                                "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT",
+                                "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT", "ATGCGAATGCGAATGCGAAT"),
+                        true, 5)
         );
     }
 

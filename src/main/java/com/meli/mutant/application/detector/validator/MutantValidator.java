@@ -5,7 +5,6 @@ import com.meli.mutant.application.detector.domain.AdnNode;
 import com.meli.mutant.application.detector.domain.DnaChain;
 import com.meli.mutant.application.detector.domain.EnumDnaSequence;
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
@@ -24,10 +23,19 @@ public class MutantValidator implements AdnValidatorInterface {
     public Mono<Human> validateGeneticCode(final Human human) {
         Map<String, List<AdnNode>> flattedDna = mapDnaNodes(human.getDna(), human.getDna().get(0).length());
 
-        return Flux.fromIterable(flattedDna.values())
-                .map(this::validateDnaChain)
-                .reduce(Integer::sum)
-                .map(value -> value >= DnaChain.MUTANT_DNA_LIMIT ? human.toBuilder().isMutant(true).build() : human.toBuilder().isMutant(false).build());
+        return Mono.just(flattedDna.values())
+                .map(allChains -> {
+                    int founded = 0;
+                    for (List<AdnNode> adnNodes : allChains) {
+                        founded += this.validateDnaChain(adnNodes);
+                        if (founded >= DnaChain.MUTANT_DNA_LIMIT) {
+                            return founded;
+                        }
+                    }
+                    return founded;
+                })
+                .map(value -> value >= DnaChain.MUTANT_DNA_LIMIT ?
+                        human.toBuilder().validChainsEvaluated(value).isMutant(true).build() : human.toBuilder().validChainsEvaluated(value).isMutant(false).build());
     }
 
     private int validateDnaChain(List<AdnNode> adnNodes) {

@@ -12,6 +12,7 @@ public class Human {
     Integer id;
     List<String> dna;
     boolean isMutant;
+    Integer validChainsEvaluated;
 
     public static Human create(DnaChain dnaChain) {
         return Human.builder().dna(dnaChain.getDna()).isMutant(false).build();
