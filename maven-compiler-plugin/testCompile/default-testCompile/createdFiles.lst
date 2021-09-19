@@ -1,8 +1,0 @@
-com/meli/mutant/application/human/HumanServiceTest.class
-com/meli/mutant/application/detector/DetectorControllerTest.class
-com/meli/mutant/MutantApplicationTests.class
-com/meli/mutant/application/stats/StatsServiceTest.class
-com/meli/mutant/application/detector/validator/MutantValidatorTest.class
-com/meli/mutant/application/stats/StatsControllerTest.class
-com/meli/mutant/application/detector/DetectorServiceTest.class
-com/meli/mutant/application/human/adapter/HumanAdapterTest.class

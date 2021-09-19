@@ -1,8 +1,0 @@
-/home/runner/work/mutantTest/mutantTest/src/test/java/com/meli/mutant/application/detector/DetectorControllerTest.java
-/home/runner/work/mutantTest/mutantTest/src/test/java/com/meli/mutant/application/human/HumanServiceTest.java
-/home/runner/work/mutantTest/mutantTest/src/test/java/com/meli/mutant/MutantApplicationTests.java
-/home/runner/work/mutantTest/mutantTest/src/test/java/com/meli/mutant/application/stats/StatsServiceTest.java
-/home/runner/work/mutantTest/mutantTest/src/test/java/com/meli/mutant/application/stats/StatsControllerTest.java
-/home/runner/work/mutantTest/mutantTest/src/test/java/com/meli/mutant/application/detector/DetectorServiceTest.java
-/home/runner/work/mutantTest/mutantTest/src/test/java/com/meli/mutant/application/human/adapter/HumanAdapterTest.java
-/home/runner/work/mutantTest/mutantTest/src/test/java/com/meli/mutant/application/detector/validator/MutantValidatorTest.java

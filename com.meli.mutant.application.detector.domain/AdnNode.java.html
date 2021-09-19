@@ -1,22 +1,377 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdnNode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">com.meli.mutant.application.detector.domain</a> &gt; <span class="el_source">AdnNode.java</span></div><h1>AdnNode.java</h1><pre class="source lang-java linenums">package com.meli.mutant.application.detector.domain;
-
-import lombok.Builder;
-import lombok.Value;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-@Value
-@Builder
-public class AdnNode {
-    EnumDnaSequence dnaSequence;
-
-    public static List&lt;AdnNode&gt; createFromString(String value) {
-<span class="fc" id="L15">        return value.chars().mapToObj(e -&gt; (char) e).map(charVal -&gt; AdnNode.builder().dnaSequence(EnumDnaSequence.valueOf(String.valueOf(charVal))).build())</span>
-<span class="fc" id="L16">                .collect(Collectors.toList());</span>
-    }
-
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
 
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
+<h1>AdnNode.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.meli.mutant.application.detector.domain;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import lombok.Builder;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import lombok.Value;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.stream.Collectors;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>@Value</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>@Builder</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class AdnNode {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    EnumDnaSequence dnaSequence;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static List&#60;AdnNode&#62; createFromString(String value) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_15'/>
+15
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_15'>3</a>
+<span>
+1. createFromString : replaced return value with Collections.emptyList for com/meli/mutant/application/detector/domain/AdnNode::createFromString &rarr; KILLED<br/>
+2. lambda$createFromString$0 : replaced Character return value with 0 for com/meli/mutant/application/detector/domain/AdnNode::lambda$createFromString$0 &rarr; KILLED<br/>
+3. lambda$createFromString$1 : replaced return value with null for com/meli/mutant/application/detector/domain/AdnNode::lambda$createFromString$1 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return value.chars().mapToObj(e -&#62; (char) e).map(charVal -&#62; AdnNode.builder().dnaSequence(EnumDnaSequence.valueOf(String.valueOf(charVal))).build())</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                .collect(Collectors.toList());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4a5f435b_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4a5f435b_15'>15</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4a5f435b_15'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createFromString<br/><b>Killed by : </b>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#5]</span></span> replaced return value with Collections.emptyList for com/meli/mutant/application/detector/domain/AdnNode::createFromString &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>lambda$createFromString$0<br/><b>Killed by : </b>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#5]</span></span> replaced Character return value with 0 for com/meli/mutant/application/detector/domain/AdnNode::lambda$createFromString$0 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>lambda$createFromString$1<br/><b>Killed by : </b>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#5]</span></span> replaced return value with null for com/meli/mutant/application/detector/domain/AdnNode::lambda$createFromString$1 &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>BOOLEAN_FALSE_RETURN</li>
+<li class='mutator'>BOOLEAN_TRUE_RETURN</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+<li class='mutator'>EMPTY_RETURN_VALUES</li>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>NULL_RETURN_VALUES</li>
+<li class='mutator'>PRIMITIVE_RETURN_VALS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#2] (7 ms)</li><li>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#3] (6 ms)</li><li>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#1] (10 ms)</li><li>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#6] (14 ms)</li><li>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#7] (4 ms)</li><li>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#4] (7 ms)</li><li>com.meli.mutant.MutantApplicationTests.[engine:junit-jupiter]/[class:com.meli.mutant.MutantApplicationTests]/[method:contextLoads()] (15 ms)</li><li>com.meli.mutant.application.detector.validator.MutantValidatorTest.[engine:junit-jupiter]/[class:com.meli.mutant.application.detector.validator.MutantValidatorTest]/[test-template:shouldValidateGeneticCode(java.util.List, boolean, java.lang.Integer)]/[test-template-invocation:#5] (3 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.5.2
+
+</body>
+</html>
