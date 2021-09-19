@@ -44,16 +44,16 @@ class StatsServiceTest {
         return List.of(
                 Arguments.of(List.of(Human.builder().build(), Human.builder().build()),
                         List.of(Human.builder().build()),
-                        VerificationStats.builder().countHumanDna(2L).countMutantDna(1L).ratio("0,3").build()),
+                        VerificationStats.builder().countHumanDna(2L).countMutantDna(1L).ratio("0.3").build()),
                 Arguments.of(List.of(Human.builder().build(), Human.builder().build()),
                         Collections.emptyList(),
-                        VerificationStats.builder().countHumanDna(2L).countMutantDna(0L).ratio("0,0").build()),
+                        VerificationStats.builder().countHumanDna(2L).countMutantDna(0L).ratio("0.0").build()),
                 Arguments.of(List.of(Human.builder().build()),
                         List.of(Human.builder().build()),
-                        VerificationStats.builder().countHumanDna(1L).countMutantDna(1L).ratio("0,5").build()),
+                        VerificationStats.builder().countHumanDna(1L).countMutantDna(1L).ratio("0.5").build()),
                 Arguments.of(Collections.emptyList(),
                         List.of(Human.builder().build(), Human.builder().build()),
-                        VerificationStats.builder().countHumanDna(0L).countMutantDna(2L).ratio("1,0").build())
+                        VerificationStats.builder().countHumanDna(0L).countMutantDna(2L).ratio("1.0").build())
         );
     }
 

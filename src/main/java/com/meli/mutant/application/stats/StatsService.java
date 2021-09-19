@@ -7,13 +7,15 @@ import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 @AllArgsConstructor
 public class StatsService {
-    private static final NumberFormat DECIMAL_FORMAT = new DecimalFormat("#0.0");
+    private static final NumberFormat DECIMAL_FORMAT = new DecimalFormat("#0.0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
     private final HumanService humanService;
 
     public Mono<VerificationStats> getVerificationStats() {
