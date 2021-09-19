@@ -9,7 +9,10 @@ import java.util.List;
 public interface HumanRepository {
     Flux<Human> getAll();
 
+    Flux<Human> filterByMutation(boolean isMutant);
+
     Mono<Human> save(Human human);
 
     Mono<Human> getByDna(List<String> dna);
+
 }

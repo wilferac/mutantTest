@@ -1,16 +1,16 @@
 package com.meli.mutant.application.stats.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Value;
-
-import java.math.BigInteger;
 
 @Value
 @Builder
 public class VerificationStats {
-    //{“count_mutant_dna”:40, “count_human_dna”:100: “ratio”:0.4}
-    BigInteger countMutantDna;
-    BigInteger countHumanDna;
-    Integer ratio;
+    @JsonProperty("count_mutant_dna")
+    Long countMutantDna;
+    @JsonProperty("count_human_dna")
+    Long countHumanDna;
+    String ratio;
 
 }

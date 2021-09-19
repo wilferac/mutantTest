@@ -24,6 +24,11 @@ public class HumanAdapter implements HumanRepository {
     }
 
     @Override
+    public Flux<Human> filterByMutation(boolean isMutant) {
+        return humanCrudRepository.findAllByIsMutant(isMutant).map(this::mapToHuman);
+    }
+
+    @Override
     public Mono<Human> save(Human human) {
         return humanCrudRepository.save(mapToHumanEntity(human)).map(entity -> human.toBuilder().id(entity.getId()).build());
     }
@@ -35,7 +40,6 @@ public class HumanAdapter implements HumanRepository {
 
     private Human mapToHuman(HumanEntity humanEntity) {
         List<String> dna = Collections.emptyList();
-
         try {
             dna = OBJECT_MAPPER.readValue(humanEntity.getDna(), OBJECT_MAPPER.getTypeFactory().constructCollectionType(Collection.class, String.class));
         } catch (JsonProcessingException jsonProcessingException) {

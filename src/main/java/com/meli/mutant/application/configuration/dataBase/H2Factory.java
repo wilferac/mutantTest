@@ -11,7 +11,7 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
 @Configuration
 @EnableR2dbcRepositories
-public class R2DBCConfiguration extends AbstractR2dbcConfiguration {
+public class H2Factory extends AbstractR2dbcConfiguration {
     @Value("${spring.r2dbc.url}")
     private String url;
 

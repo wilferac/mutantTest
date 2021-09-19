@@ -16,6 +16,10 @@ public class HumanService {
         return humanRepository.getAll();
     }
 
+    public Flux<Human> filterByMutation(boolean isMutant) {
+        return humanRepository.filterByMutation(isMutant);
+    }
+
     public Mono<Human> getByDna(List<String> dna) {
         return humanRepository.getByDna(dna);
     }

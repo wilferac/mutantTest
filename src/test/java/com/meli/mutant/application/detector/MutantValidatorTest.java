@@ -2,23 +2,27 @@ package com.meli.mutant.application.detector;
 
 import com.meli.mutant.application.Human.domain.Human;
 import com.meli.mutant.application.detector.validator.MutantValidator;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.util.List;
 
-@RunWith(MockitoJUnitRunner.class)
-public class MutantValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class MutantValidatorTest {
 
-    @InjectMocks
     MutantValidator mutantValidator;
 
+    @BeforeEach
+    void setup() {
+        mutantValidator = new MutantValidator();
+    }
+
     @Test
-    public void shouldBeMutant() {
+    void shouldBeMutant() {
         List<String> dna = List.of("ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG");
         Human testSubject = Human.builder().dna(dna).build();
 
@@ -29,7 +33,7 @@ public class MutantValidatorTest {
     }
 
     @Test
-    public void shouldBeHuman() {
+    void shouldBeHuman() {
         List<String> dna = List.of("ATGCTA", "CAGTGC", "TTATGT", "AGAAGG", "CCTCTA", "TCACTG");
         Human testSubject = Human.builder().dna(dna).build();
 
