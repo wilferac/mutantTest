@@ -83,11 +83,11 @@ jobs:
           wait-for-service-stability: true
 
       - name: Run JMeter Action
-          uses: ./
-          with:
-            testFilePath: src/main/resources/jmeter/mutant_load_test.jmx
-            outputReportsFolder: reports/
-            args: "--loglevel INFO"
+        uses: ./
+        with:
+          testFilePath: src/main/resources/jmeter/mutant_load_test.jmx
+          outputReportsFolder: reports/
+          args: "--loglevel INFO"
 
       - name: Save Artifact
         uses: actions/upload-artifact@v2
