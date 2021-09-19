@@ -15,7 +15,7 @@ public class DetectorService {
     private final HumanService humanService;
 
     public Mono<ResponseEntity> isMutant(DnaChain dnaChain) {
-        if(!dnaChain.validateDna()){
+        if (!dnaChain.validateDna()) {
             return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La cadena de ADN es invalida"));
         }
 

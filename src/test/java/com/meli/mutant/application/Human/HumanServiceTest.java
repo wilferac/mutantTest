@@ -39,7 +39,7 @@ class HumanServiceTest {
 
     @Test
     void shouldGetByDna() {
-        var dnaChain = List.of("TAGC","TAGC");
+        var dnaChain = List.of("TAGC", "TAGC");
         var mockedData = Human.builder().id(1).dna(dnaChain).isMutant(false).build();
         Mockito.when(humanRepository.getByDna(dnaChain)).thenReturn(Mono.just(mockedData));
 
@@ -51,7 +51,7 @@ class HumanServiceTest {
 
     @Test
     void shouldSave() {
-        var dnaChain = List.of("TAGC","TAGC");
+        var dnaChain = List.of("TAGC", "TAGC");
         var mockedData = Human.builder().id(1).dna(dnaChain).isMutant(false).build();
         var humanToSave = Human.builder().dna(dnaChain).isMutant(false).build();
         Mockito.when(humanRepository.save(humanToSave)).thenReturn(Mono.just(mockedData));
