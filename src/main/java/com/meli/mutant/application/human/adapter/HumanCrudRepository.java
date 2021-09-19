@@ -1,4 +1,4 @@
-package com.meli.mutant.application.Human.adapter;
+package com.meli.mutant.application.human.adapter;
 
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;

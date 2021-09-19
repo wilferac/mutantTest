@@ -1,6 +1,6 @@
 package com.meli.mutant.application.configuration.services;
 
-import com.meli.mutant.application.Human.HumanService;
+import com.meli.mutant.application.human.HumanService;
 import com.meli.mutant.application.detector.DetectorService;
 import com.meli.mutant.application.detector.validator.MutantValidator;
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,7 @@
-package com.meli.mutant.application.Human;
+package com.meli.mutant.application.human;
 
-import com.meli.mutant.application.Human.adapter.HumanRepository;
-import com.meli.mutant.application.Human.domain.Human;
+import com.meli.mutant.application.human.adapter.HumanRepository;
+import com.meli.mutant.application.human.domain.Human;
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

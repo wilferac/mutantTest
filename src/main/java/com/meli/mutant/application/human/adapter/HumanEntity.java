@@ -1,4 +1,4 @@
-package com.meli.mutant.application.Human.adapter;
+package com.meli.mutant.application.human.adapter;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

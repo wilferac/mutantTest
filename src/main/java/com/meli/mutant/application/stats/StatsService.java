@@ -1,7 +1,7 @@
 package com.meli.mutant.application.stats;
 
-import com.meli.mutant.application.Human.HumanService;
-import com.meli.mutant.application.Human.domain.Human;
+import com.meli.mutant.application.human.HumanService;
+import com.meli.mutant.application.human.domain.Human;
 import com.meli.mutant.application.stats.domain.VerificationStats;
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;

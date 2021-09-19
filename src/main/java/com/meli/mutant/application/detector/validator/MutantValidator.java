@@ -1,6 +1,6 @@
 package com.meli.mutant.application.detector.validator;
 
-import com.meli.mutant.application.Human.domain.Human;
+import com.meli.mutant.application.human.domain.Human;
 import com.meli.mutant.application.detector.domain.AdnNode;
 import com.meli.mutant.application.detector.domain.DnaChain;
 import com.meli.mutant.application.detector.domain.EnumDnaSequence;

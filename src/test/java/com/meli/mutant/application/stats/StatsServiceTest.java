@@ -1,7 +1,7 @@
 package com.meli.mutant.application.stats;
 
-import com.meli.mutant.application.Human.HumanService;
-import com.meli.mutant.application.Human.domain.Human;
+import com.meli.mutant.application.human.HumanService;
+import com.meli.mutant.application.human.domain.Human;
 import com.meli.mutant.application.stats.domain.VerificationStats;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;

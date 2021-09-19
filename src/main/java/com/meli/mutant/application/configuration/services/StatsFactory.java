@@ -1,6 +1,6 @@
 package com.meli.mutant.application.configuration.services;
 
-import com.meli.mutant.application.Human.HumanService;
+import com.meli.mutant.application.human.HumanService;
 import com.meli.mutant.application.stats.StatsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

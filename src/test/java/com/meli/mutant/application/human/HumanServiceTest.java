@@ -1,7 +1,7 @@
-package com.meli.mutant.application.Human;
+package com.meli.mutant.application.human;
 
-import com.meli.mutant.application.Human.adapter.HumanRepository;
-import com.meli.mutant.application.Human.domain.Human;
+import com.meli.mutant.application.human.adapter.HumanRepository;
+import com.meli.mutant.application.human.domain.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

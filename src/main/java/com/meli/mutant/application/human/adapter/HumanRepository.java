@@ -1,6 +1,6 @@
-package com.meli.mutant.application.Human.adapter;
+package com.meli.mutant.application.human.adapter;
 
-import com.meli.mutant.application.Human.domain.Human;
+import com.meli.mutant.application.human.domain.Human;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

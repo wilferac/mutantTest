@@ -1,4 +1,4 @@
-package com.meli.mutant.application.Human.domain;
+package com.meli.mutant.application.human.domain;
 
 import com.meli.mutant.application.detector.domain.DnaChain;
 import lombok.Builder;

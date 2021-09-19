@@ -1,8 +1,8 @@
-package com.meli.mutant.application.Human.adapter;
+package com.meli.mutant.application.human.adapter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meli.mutant.application.Human.domain.Human;
+import com.meli.mutant.application.human.domain.Human;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
