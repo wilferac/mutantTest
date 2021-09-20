@@ -6,7 +6,7 @@ Esta aplicación usa spring boot, puede ser ejecutada fácilmente con el siguien
 
 una vez desplegada la aplicación se puede acceder usando el link [http://localhost:9090/swagger-ui.html](http://localhost:9090/swagger-ui.html)
 
-##Uso de la aplicacion
+## Uso de la aplicacion
 A continuación se explicaran los endpoint de la aplicacion y se darán ejemplos de uso
 
 1. [POST detector/mutant](http://localhost:9090/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/detector-controller/isMutant) Valida si una cadena de ADN pertenece a un mutante o no 
@@ -44,7 +44,7 @@ Obtiene las estadísticas de las verificaciones de ADN
        --header 'accept: application/json'
       ```
       
-##CI/CD
+## CI/CD
 
 1. [Mutation y Unit Test](https://github.com/wilferac/mutantTest/actions/workflows/pitest.yml) archivo _**_pitest.yml_**_ 
    <br />Es encargado de ejecutar unit test y mutation test,
@@ -53,15 +53,15 @@ Obtiene las estadísticas de las verificaciones de ADN
       <br />Es encargado de desplegar la aplicación en AWS en una instancia EC2, se ejecuta cada vez que se crea un release3. [Jmeter Test](https://github.com/wilferac/mutantTest/actions/workflows/jmeter.yml) archivo _**_jmeter.yml_**_
    <br />Es encargado ejecutar pruebas de carga sobre la aplicación desplegada en AWS, el job genera un artefacto con los resultados de la ejecución.  
 
-##AWS Flow 
+## AWS Flow 
 Cuando se crea un release, un Action definido en Gitlab crea una imagen docker la cual es enviada a un cluster ECS que a su vez despliega una instancia EC2,
 el cluster ECS se encarga mantener la instancia EC2 arriba brindando alta disponibilidad a la aplicación en caso de algún crash de la misma
 
 ![](src/main/resources/doc/flowAWs.png)
 
-##Reactive con Reactor
+## Reactive con Reactor
 Esta aplicación hace uso del [paradigma reactivo](https://en.wikipedia.org/wiki/Reactive_programming), lo cual ayuda al procesamiento de grandes cantidades de datos y a mantener un código limpio evitando la necesidad de usar Threads para conseguir un gran rendimiento.
-##Technologies and Design details
+## Technologies and Design details
 * Java 11
 * Reactor, full reactive API
 * Domain Driven Design
