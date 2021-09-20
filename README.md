@@ -17,7 +17,7 @@ A continuación se explicaran los endpoint de la aplicacion y se darán ejemplos
       2. Códigos de respuesta:
          1. ``` 200 OK. ``` Si el adn es mutante
          2. ```403 Forbidden.``` Si el adn es humano
-         3. ```400 Bad Request.``` para parametros invalidos
+         3. ```400 Bad Request.``` Si los parametros son invalidos
    - Curl de ejemplo
        ``` angularjs
        curl --location --request POST 'http://localhost:9090/detector/mutant' \
@@ -50,7 +50,8 @@ Obtiene las estadísticas de las verificaciones de ADN
    <br />Es encargado de ejecutar unit test y mutation test,
    el job genera un artefacto con los resultados de la ejecución, donde encontraremos los resultados del mutation test y el coverage del código
 2. [Deploy to Amazon](https://github.com/wilferac/mutantTest/actions/workflows/aws.yml) archivo _**_aws.yml_**_
-      <br />Es encargado de desplegar la aplicación en AWS en una instancia EC2, se ejecuta cada vez que se crea un release3. [Jmeter Test](https://github.com/wilferac/mutantTest/actions/workflows/jmeter.yml) archivo _**_jmeter.yml_**_
+      <br />Es encargado de desplegar la aplicación en AWS en una instancia EC2, se ejecuta cada vez que se crea un release
+3. [Jmeter Test](https://github.com/wilferac/mutantTest/actions/workflows/jmeter.yml) archivo _**_jmeter.yml_**_
    <br />Es encargado ejecutar pruebas de carga sobre la aplicación desplegada en AWS, el job genera un artefacto con los resultados de la ejecución.  
 
 ## AWS Flow 
