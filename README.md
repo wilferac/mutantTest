@@ -1,7 +1,7 @@
 # Mutant Validator
 
 API para validar si una cadena de ADN es mutante, provee un endpoint para validación y otro para obtener las estadísticas de las validaciones  
- * URL -> [http://localhost:9090/swagger-ui.html](http://localhost:9090/swagger-ui.html) 
+ * URL -> [http://awsLink/swagger-ui.html](http://ec2-34-220-225-24.us-west-2.compute.amazonaws.com/swagger-ui.html) 
 
 ## Ejecutar localmente
 Esta aplicación usa spring boot, puede ser ejecutada fácilmente con el siguiente comando
