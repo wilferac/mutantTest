@@ -30,8 +30,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Variables definidas por el Usuario" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">ec2-34-220-225-24.us-west-2.compute.amazonaws.com/</stringProp>
-          <stringProp name="HTTPSampler.port">9090</stringProp>
+          <stringProp name="HTTPSampler.domain">ec2-34-220-225-24.us-west-2.compute.amazonaws.com</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">stats/verification</stringProp>

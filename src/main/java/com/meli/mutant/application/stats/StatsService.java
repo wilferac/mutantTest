@@ -28,7 +28,10 @@ public class StatsService {
                     long totalMutants = data.getT2().size();
                     long totalPeople = totalHumans + totalMutants;
 
-                    Double ratio = totalHumans == 0 ? 1D : (double) totalMutants / (double) totalPeople;
+                    Double ratio = 0d;
+                    if (totalPeople > 0) {
+                        ratio = totalHumans == 0 ? 1D : (double) totalMutants / (double) totalPeople;
+                    }
 
                     return VerificationStats.builder()
                             .countHumanDna(totalHumans)
