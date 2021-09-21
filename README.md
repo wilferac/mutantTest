@@ -1,4 +1,9 @@
 # Mutant Validator
+
+API para validar si una cadena de ADN es mutante, provee un endpoint para validación y otro para obtener las estadísticas de las validaciones  
+ * URL -> [http://localhost:9090/swagger-ui.html](http://localhost:9090/swagger-ui.html) 
+
+## Ejecutar localmente
 Esta aplicación usa spring boot, puede ser ejecutada fácilmente con el siguiente comando
 ``` angularjs
  mvn spring-boot:run
@@ -18,27 +23,28 @@ A continuación se explicaran los endpoint de la aplicacion y se darán ejemplos
          1. ``` 200 OK. ``` Si el adn es mutante
          2. ```403 Forbidden.``` Si el adn es humano
          3. ```400 Bad Request.``` Si los parametros son invalidos
-   - Curl de ejemplo
-       ``` angularjs
-       curl --location --request POST 'http://localhost:9090/detector/mutant' \
-       --header 'accept: */*' \
-       --header 'Content-Type: application/json' \
-       --data-raw '{
-           "dna": [
-               "CTAC",
-               "CAAT",
-               "TAAT",
-               "AGAA"
-           ]
-       }'
-        ```
+         <br /><br />
+      3. Curl de ejemplo
+          ``` angularjs
+          curl --location --request POST 'http://localhost:9090/detector/mutant' \
+          --header 'accept: */*' \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+              "dna": [
+                  "CTAC",
+                  "CAAT",
+                  "TAAT",
+                  "AGAA"
+              ]
+          }'
+           ```
 2. [GET stats/verification](http://localhost:9090/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/stats-controller/getVerificationStats)
 Obtiene las estadísticas de las verificaciones de ADN
    1. Ejemplo de respuesta:
       ``` angularjs
       {"count_mutant_dna": 0, "count_human_dna": 1, "ratio": "0.0"}
       ```
-    - Curl de ejemplo
+    2.  Curl de ejemplo
       ``` angularjs
        curl --location --request GET 'http://localhost:9090/stats/verification' \
        --header 'accept: application/json'
@@ -62,7 +68,7 @@ el cluster ECS se encarga mantener la instancia EC2 arriba brindando alta dispon
 
 ## Reactive con Reactor
 Esta aplicación hace uso del [paradigma reactivo](https://en.wikipedia.org/wiki/Reactive_programming), lo cual ayuda al procesamiento de grandes cantidades de datos y a mantener un código limpio evitando la necesidad de usar Threads para conseguir un gran rendimiento.
-## Technologies and Design details
+## Technologies and Design
 * Java 11
 * Reactor, full reactive API
 * Domain Driven Design
