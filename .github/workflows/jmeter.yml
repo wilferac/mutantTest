@@ -6,6 +6,12 @@ on:
     workflows: ["Deploy to Amazon ECS"]
     types:
       - completed
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
 
 jobs:
   action_build:
